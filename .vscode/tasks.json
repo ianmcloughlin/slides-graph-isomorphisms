@@ -20,7 +20,6 @@
       "command": "latexmk -C",
       "group": {
         "kind": "build",
-        "isDefault": true
       },
       "presentation": {
         "panel": "new"
