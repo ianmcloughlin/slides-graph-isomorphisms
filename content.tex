@@ -7,7 +7,7 @@
   \end{itemize}
   
   \begin{center}
-    \begin{tikzpicture}[ele/.style={fill=black,circle,minimum width=.8pt,inner sep=1pt},every fit/.style={ellipse,draw,inner sep=-2pt}]
+    \begin{tikzpicture}[ele/.style={fill=black,circle,minimum width=.8pt,inner sep=1pt},every fit/.style={ellipse,draw,inner sep=-2pt}, >=latex]
       \node[ele,label=left:$a$] (a1) at (0,4) {};    
       \node[ele,label=left:$b$] (a2) at (0,3) {};    
       \node[ele,label=left:$c$] (a3) at (0,2) {};
@@ -18,13 +18,13 @@
       \node[ele,label=right:$3$] (b3) at (4,2) {};
       \node[ele,label=right:$4$] (b4) at (4,1) {};
     
-      \node[draw,fit= (a1) (a2) (a3) (a4),minimum width=2cm] {} ;
-      \node[draw,fit= (b1) (b2) (b3) (b4),minimum width=2cm] {} ;
+      \node[draw, fit= (a1) (a2) (a3) (a4), minimum width=20mm] {} ;
+      \node[draw, fit= (b1) (b2) (b3) (b4), minimum width=20mm] {} ;
 
-      \draw[->,thick,shorten <=2pt,shorten >=2pt] (a1) -- (b1);
-      \draw[->,thick,shorten <=2pt,shorten >=2pt] (a2) -- (b2);
-      \draw[->,thick,shorten <=2pt,shorten >=2pt] (a3) -- (b3);
-      \draw[->,thick,shorten <=2pt,shorten >=2pt] (a4) -- (b4);  
+      \path[->, shorten <=2pt, shorten >=2pt] (a1) edge node[above] {$f$} (b1);
+      \draw[->, shorten <=2pt, shorten >=2pt] (a2) edge node[above] {$f$} (b2);
+      \draw[->, shorten <=2pt, shorten >=2pt] (a3) edge node[above] {$f$} (b3);
+      \draw[->, shorten <=2pt, shorten >=2pt] (a4) edge node[above] {$f$} (b4);  
     \end{tikzpicture} 
   \end{center}
   
@@ -101,9 +101,9 @@
     \begin{tikzpicture}
       \begin{scope}[every node/.style={circle, fill=black}]
         \node (a) at (1   ,1.5) {};
-        \node (b) at (1   ,3) {};
-        \node (c) at (0.33,0) {};
-        \node (d) at (1.66,0) {};
+        \node (b) at (1   ,3  ) {};
+        \node (c) at (0.33,0  ) {};
+        \node (d) at (1.66,0  ) {};
       \end{scope}
       \begin{scope}[every edge/.style={draw=black,thick}]
         \path (a) edge (b);

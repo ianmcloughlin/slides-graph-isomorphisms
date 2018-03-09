@@ -9,21 +9,12 @@
       "group": {
         "kind": "build",
         "isDefault": true
-      },
-      "presentation": {
-        "panel": "new"
       }
     },
     {
       "label": "Clean",
       "type": "process",
       "command": "latexmk -C",
-      "group": {
-        "kind": "build",
-      },
-      "presentation": {
-        "panel": "new"
-      }
     }
   ]
 }
