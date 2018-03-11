@@ -1,30 +1,34 @@
 \begin{frame}{Bijections}
   
-  A bijection is map $f$ from a set $X$ to a set $Y$ where both of the following are true:
+  A bijection is map \( f \) from a set \( X \) to a set \( Y \) where both of the following are true:
   \begin{itemize}
-    \item every $y$ in $Y$ is a value $f(x)$ for at most one $x$ in $X$.
-    \item every $y$ in $Y$ is a value $f(x)$ for at least one $x$ in $X$.
+    \item every \( y \) in \( Y \) is a value \( f(x) \) for at most one \( x \) in \( X \).
+    \item every \( y \) in \( Y \) is a value \( f(x) \) for at least one \( x \) in \( X \).
   \end{itemize}
   
   \begin{center}
-    \begin{tikzpicture}[ele/.style={fill=black,circle,minimum width=.8pt,inner sep=1pt},every fit/.style={ellipse,draw,inner sep=-2pt}, >=latex]
-      \node[ele,label=left:$a$] (a1) at (0,4) {};    
-      \node[ele,label=left:$b$] (a2) at (0,3) {};    
-      \node[ele,label=left:$c$] (a3) at (0,2) {};
-      \node[ele,label=left:$d$] (a4) at (0,1) {};
-    
-      \node[ele,label=right:$1$] (b1) at (4,4) {};
-      \node[ele,label=right:$2$] (b2) at (4,3) {};
-      \node[ele,label=right:$3$] (b3) at (4,2) {};
-      \node[ele,label=right:$4$] (b4) at (4,1) {};
-    
-      \node[draw, fit= (a1) (a2) (a3) (a4), minimum width=20mm] {} ;
-      \node[draw, fit= (b1) (b2) (b3) (b4), minimum width=20mm] {} ;
-
-      \path[->, shorten <=2pt, shorten >=2pt] (a1) edge node[above] {$f$} (b1);
-      \draw[->, shorten <=2pt, shorten >=2pt] (a2) edge node[above] {$f$} (b2);
-      \draw[->, shorten <=2pt, shorten >=2pt] (a3) edge node[above] {$f$} (b3);
-      \draw[->, shorten <=2pt, shorten >=2pt] (a4) edge node[above] {$f$} (b4);  
+    \begin{tikzpicture}
+      \begin{scope}[every node/.style={circle, fill=black, inner sep=1pt}]
+        \node[label=left:\( a \)] (a1) at (0,4) {};    
+        \node[label=left:\( b \)] (a2) at (0,3) {};    
+        \node[label=left:\( c \)] (a3) at (0,2) {};
+        \node[label=left:\( d \)] (a4) at (0,1) {};
+      
+        \node[label=right:\( 1 \)] (b1) at (4,4) {};
+        \node[label=right:\( 2 \)] (b2) at (4,3) {};
+        \node[label=right:\( 3 \)] (b3) at (4,2) {};
+        \node[label=right:\( 4 \)] (b4) at (4,1) {};
+      \end{scope}
+      
+      \begin{scope}[every fit/.style={ellipse, draw,  inner sep=-2pt}]
+        \node[draw, fit= (a1) (a2) (a3) (a4), minimum width=20mm] {} ;
+        \node[draw, fit= (b1) (b2) (b3) (b4), minimum width=20mm] {} ;
+      \end{scope}
+      
+      \path[->, >=latex, shorten <=2pt, shorten >=2pt] (a1) edge node[above] {\( f \)} (b1)
+                                                       (a2) edge node[above] {\( f \)} (b2)
+                                                       (a3) edge node[above] {\( f \)} (b3)
+                                                       (a4) edge node[above] {\( f \)} (b4);  
     \end{tikzpicture} 
   \end{center}
   
@@ -33,66 +37,57 @@
   
 \begin{frame}{Isomorphisms}
   \begin{itemize}
-    \item Two graphs $G_1 = (V_1,E_1)$ and $G_2=(V_2,E_2)$ are said to be isomorphic when there is a bijection $f$ from $V_1$ to $V_2$ Bsuch that $\{f(x), f(y) \}$ is in $E_2$ if and only if $(x,y)$ is in $E_1$.
-    \item Then $f$ is said to be an isomorphism.
+    \item Two graphs \( G_1 = (V_1,E_1) \) and \( G_2=(V_2,E_2) \) are said to be isomorphic when there is a bijection \( f \) from \( V_1 \) to \( V_2 \) such that \( \{f(x), f(y) \} \) is in \( E_2 \) if and only if \( (x,y) \) is in \( E_1 \).
+    \item Then \( f \) is said to be an isomorphism.
     \item So, an isomorphism is a bijection between the vertex sets that preserves the edges.
   \end{itemize}
   \vspace{4mm}
-  \begin{center}
-    \begin{columns}
-      \begin{column}{0.3\textwidth}
-        \begin{tikzpicture}
-          \begin{scope}[every node/.style={circle,thick,draw}]
-            \node (a) at (0,0) {$a$};
-            \node (b) at (0,2) {$b$};
-            \node (c) at (2,2) {$c$};
-            \node (d) at (2,0) {$d$};
-          \end{scope}
-          \begin{scope}[every edge/.style={draw=black,thick}]
-            \path (a) edge (b);
-            \path (b) edge (c);
-            \path (c) edge (d);
-            \path (d) edge (a);
-          \end{scope}
-        \end{tikzpicture}
-      \end{column}
-      
-      \begin{column}{0.3\textwidth}
-        \begin{tikzpicture}
-          \begin{scope}[every node/.style={circle,thick,draw}]
-            \node (a) at (0,0) {$a$};
-            \node (c) at (0,2) {$c$};
-            \node (b) at (2,2) {$b$};
-            \node (d) at (2,0) {$d$};
-          \end{scope}
-          \begin{scope}[every edge/.style={draw=black,thick}]
-            \path (b) edge (c);
-            \path (c) edge (d);
-            \path (b) edge (a);
-            \path (d) edge (a);
-          \end{scope}
-        \end{tikzpicture}
-      \end{column}
-      
-      \begin{column}{0.3\textwidth}
-        \begin{tikzpicture}
-          \begin{scope}[every node/.style={circle,thick,draw}]
-            \node (a) at (0,0) {$a$};
-            \node (b) at (0,2) {$b$};
-            \node (c) at (2,2) {$c$};
-            \node (d) at (2,0) {$d$};
-          \end{scope}
-          \begin{scope}[every edge/.style={draw=black,thick}]
-            \path (b) edge (c);
-            \path (b) edge (d);
-            \path (c) edge (a);
-            \path (d) edge (a);
-          \end{scope}
-        \end{tikzpicture}
-      \end{column}
-    \end{columns}
-  \end{center}
-  
+  \begin{adjustbox}{max width={0.9\textwidth}, center}
+    \begin{tikzpicture}
+      \begin{scope}
+        \begin{scope}[every node/.style={circle,thick,draw}]
+          \node (a) at (0,0) {\( 1 \)};
+          \node (b) at (0,2) {\( 2 \)};
+          \node (c) at (2,2) {\( 3 \)};
+          \node (d) at (2,0) {\( 4 \)};
+        \end{scope}
+        \begin{scope}[every edge/.style={draw=black,thick}]
+          \path (a) edge (b)
+                (b) edge (c)
+                (c) edge (d)
+                (d) edge (a);
+        \end{scope}
+      \end{scope}
+      \begin{scope}[xshift=40mm]
+        \begin{scope}[every node/.style={circle,thick,draw}]
+          \node (a) at (0,0) {\( 1 \)};
+          \node (c) at (0,2) {\( 3 \)};
+          \node (b) at (2,2) {\( 2 \)};
+          \node (d) at (2,0) {\( 4 \)};
+        \end{scope}
+        \begin{scope}[every edge/.style={draw=black,thick}]
+          \path (b) edge (c)
+                (c) edge (d)
+                (b) edge (a)
+                (d) edge (a);
+        \end{scope}
+      \end{scope}
+      \begin{scope}[xshift=80mm]
+        \begin{scope}[every node/.style={circle,thick,draw}]
+          \node (a) at (0,0) {\( 1 \)};
+          \node (b) at (0,2) {\( 2 \)};
+          \node (c) at (2,2) {\( 3 \)};
+          \node (d) at (2,0) {\( 4 \)};
+        \end{scope}
+        \begin{scope}[every edge/.style={draw=black,thick}]
+          \path (b) edge (c)
+                (b) edge (d)
+                (c) edge (a)
+                (d) edge (a);
+        \end{scope}
+      \end{scope}
+    \end{tikzpicture}
+  \end{adjustbox} 
 \end{frame}
   
   
@@ -105,11 +100,11 @@
         \node (c) at (0.33,0  ) {};
         \node (d) at (1.66,0  ) {};
       \end{scope}
-      \begin{scope}[every edge/.style={draw=black,thick}]
-        \path (a) edge (b);
-        \path (a) edge (c);
-        \path (a) edge (d);
-        \path (c) edge (d);
+      \begin{scope}[every edge/.style={draw=black, thick}]
+        \path (a) edge (b)
+              (a) edge (c)
+              (a) edge (d)
+              (c) edge (d);
       \end{scope}
       \begin{scope}[every node/.style={circle, fill=black}]
         \node (1) at (6,2) {};
@@ -117,21 +112,21 @@
         \node (3) at (8,2) {};
         \node (4) at (8,0) {};
       \end{scope}
-      \begin{scope}[every edge/.style={draw=black,thick}]
-        \path (1) edge (2);
-        \path (1) edge (3);
-        \path (1) edge (4);
-        \path (3) edge (4);
+      \begin{scope}[every edge/.style={draw=black, thick}]
+        \path (1) edge (2)
+              (1) edge (3)
+              (1) edge (4)
+              (3) edge (4);
       \end{scope}
-      \begin{scope}[every edge/.style={draw=gmitred, dashed, thick, ->, >=latex}]
-        \path (a) edge[bend left] (1);
-        \path (b) edge[bend right] (2);
-        \path (c) edge[bend right] (3);
-        \path (d) edge[bend right] (4);
+      \begin{scope}[every edge/.style={draw=gmitred, dashed, ->, >=latex}]
+        \path (a) edge[bend left]  (1)
+              (b) edge[bend right] (2)
+              (c) edge[bend right] (3)
+              (d) edge[bend right] (4);
       \end{scope}
-      \node at (1,-2) {$G_1$};
-      \node at (7,-2) {$G_2$};
-      \path (1.5,-2) edge[draw=gmitred, dashed, thick, ->, >=latex] node[below] {$f$} (6.5,-2);
+      \node at (1,-2) {\( G_1 \)};
+      \node at (7,-2) {\( G_2 \)};
+      \path (1.5,-2) edge[draw=gmitred, dashed, ->, >=latex] node[below] {\( f \)} (6.5,-2);
     \end{tikzpicture}
   \end{center}
 \end{frame}
@@ -144,7 +139,7 @@
     \begin{column}{0.5\textwidth}
       \begin{center}
         \begin{tikzpicture}
-          \begin{scope}[every node/.style={circle,thick,draw,fill}]
+          \begin{scope}[every node/.style={circle,fill=black}]
             \node (a) at (0,1) {};
             \node (b) at (0,4) {};
             \node (c) at (2,1) {};
@@ -172,7 +167,7 @@
       \vspace{10mm}
       \begin{center}
         \begin{tikzpicture}
-          \begin{scope}[every node/.style={circle,fill,thick,draw}]
+          \begin{scope}[every node/.style={circle,fill=black}]
             \node (a) at (0,0) {};
             \node (b) at (0,2) {};
             \node (c) at (1.5,0) {};
